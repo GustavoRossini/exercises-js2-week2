@@ -14,18 +14,42 @@
  * </div>
  */
 function exerciseOne(arrayOfPeople) {
-  let content = document.querySelector("#content");
+  
+  for (var i = 0; i < arrayOfPeople.length; i++){
+    let content = document.querySelector("#content");  
+  let hOne = document.createElement ("h1");
+  let hTwo = document.createElement ("h2");
+  content.appendChild(hOne);
+  content.appendChild(hTwo);
+    hOne.innerText = arrayOfPeople[i].name;
+    hTwo.innerText = arrayOfPeople[i].job;
+  } 
 }
 
 /**
- *
+ 
  * Create a list of shopping items. You should use an unordered list.
  *
  * All of your HTML should go inside the Div tag with the id "content".
  *
  */
 function exerciseTwo(shopping) {
+  
+  let content = document.querySelector("#content");
+  
+  let unorderedList = document.createElement ("ul");
+  content.appendChild(unorderedList);
+  unorderedList.innerText = "Shopping List";
+  
+  for (var i = 0; i < shopping.length; i++){
+   
+    let listItem = document.createElement ("li");
+    content.appendChild(listItem);
+    listItem.innerText = shopping[i];
+
+
   //Write your code in here
+}
 }
 
 /**
@@ -58,9 +82,38 @@ function exerciseTwo(shopping) {
     The end result should look something like this: https://hyf-js2-week1-makeme-ex1-demo.herokuapp.com/
 **/
 function exerciseThree(books) {
-  //Write your code in here
-}
 
+  let content = document.querySelector("#content");
+  content.style.display = "inline-block";
+  
+  let unorderedBookList = document.createElement ("ul");
+  content.appendChild(unorderedBookList);
+  unorderedBookList.innerText = "Books";
+  unorderedBookList.style.display = "inline";
+  
+  for(var i = 0; i < books.length; i++){
+    
+    let divList = document.createElement("div");
+    unorderedBookList.appendChild(divList);
+   
+    if (books[i].alreadyRead){
+      backgroundColorAlreadyRead = "green";
+    }
+    else backgroundColorAlreadyRead = "red";
+
+    divList.style.backgroundColor = backgroundColorAlreadyRead;
+    
+    let listBook = document.createElement("li");
+    let listBookImage = document.createElement("p");
+    divList.appendChild(listBook);
+    divList.appendChild(listBookImage);
+    listBook.innerText = books[i].title + " - " + books[i].author;
+    listBookImage.innerHTML = "<img src=\'"+ books[i].cover + "\' width=\'300px'>";
+ 
+  }
+
+  
+}
 //
 //
 //
@@ -87,16 +140,19 @@ const books = [
   {
     title: "The Design of Everyday Things",
     author: "Don Norman",
+    cover:"https://bit.ly/3aUDeSA", 
     alreadyRead: false
   },
   {
     title: "The Most Human Human",
     author: "Brian Christian",
+    cover: "https://bit.ly/2VVMKk5", 
     alreadyRead: true
   },
   {
     title: "The Pragmatic Programmer",
     author: "Andrew Hunt",
+    cover:"https://bit.ly/35ogA3P", 
     alreadyRead: true
   }
 ];
